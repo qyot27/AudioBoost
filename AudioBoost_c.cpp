@@ -1,4 +1,7 @@
 #include <math.h>
+#ifdef __clang__
+    #include <algorithm>
+#endif
 
 #include <avisynth/avisynth_c.h>
 
