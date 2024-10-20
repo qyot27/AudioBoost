@@ -42,6 +42,11 @@ if(ENABLE_C_PLUGIN)
     if (MINGW)
         set_target_properties(${PROJECTLIB} PROPERTIES PREFIX "")
         set_target_properties(${PROJECTLIB} PROPERTIES IMPORT_PREFIX "")
+
+        # 32-bit GCC builds require special handling
+        if (CMAKE_SIZEOF_VOID_P EQUAL 4)
+            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DAVSC_WIN32_GCC32")
+        endif()
     endif()
 endif()
 
